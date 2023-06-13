@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoEx"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DemoEx" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!-- TextBlock для названия страницы -->
+        <TextBlock 
+            Text="{Binding ElementName=MainFrame, Path=Content.Title}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24"/>
+        <!-- Button для навигации назад -->
+        <Button
+            Name="BtnBack"
+            Content="Back"
+            Margin="10"
+            Width="200"
+            Height="30"
+            FontSize="18"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Click="BtnBack_Click"/>
+        <!-- Frame для страниц -->
+        <Frame
+            Name="MainFrame"
+            Grid.Row="1"
+            ContentRendered="MainFrame_ContentRendered"
+            NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

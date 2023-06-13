@@ -23,6 +23,21 @@ namespace DemoEx
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Pages.PageAvtoriz());
+        }
+        // Для скрытия кнопки назад
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+                BtnBack.Visibility = Visibility.Visible;
+            else
+                BtnBack.Visibility = Visibility.Hidden;
+        }
+        // Для навигации назад
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+                MainFrame.GoBack();
         }
     }
 }
