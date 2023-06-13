@@ -35,6 +35,7 @@
                 Margin="10"/>
 
             <TextBox 
+                Name="TBlogin"
                 Width="200"
                 Height="35"
                 Grid.Column="1"
@@ -42,6 +43,7 @@
                 FontSize="18"
                 Margin="10"/>
             <TextBox 
+                Name="TBPassword"
                 Width="200"
                 Height="35"
                 Grid.Column="1"

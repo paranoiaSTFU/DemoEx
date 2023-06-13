@@ -7,59 +7,75 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Товары">
-    <StackPanel
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         Orientation="Vertical">
-        <!-- Навигация на прочие страницы -->
-        <StackPanel 
+            <!-- Навигация на прочие страницы -->
+            <StackPanel 
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Orientation="Horizontal"
             Height="50">
-            <Button
-                Name="BtnZakazView"
-                Content="Заказ"
-                Click="BtnZakazView_Click"
-                Margin="10"
-                Width="200"
-                Height="30"
-                FontSize="18"/>
-            <Button
-                Name="Btn"
-                Content="Что-то ещё"
-                Click="Btn_Click"
-                Margin="10"
-                Width="200"
-                Height="30"
-                FontSize="18"/>
+                <Button
+                    Visibility ="{Binding NullOrder}"
+                    Name="BtnZakazView"
+                    Content="Заказ"
+                    Click="BtnZakazView_Click"
+                    Margin="10"
+                    Width="200"
+                    Height="30"
+                    FontSize="18"/>
+                <Button
+                    Name="Btn"
+                    Content="Что-то ещё"
+                    Click="Btn_Click"
+                    Margin="10"
+                    Width="200"
+                    Height="30"
+                    FontSize="18"/>
+            </StackPanel>
+            <!-- Список товаров -->
+                <Grid>
+                    <ListView
+                Name="LVproduct">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+
+                            <StackPanel 
+                                Orientation="Vertical">
+
+                                    <Image Source="{Binding PhotoView}"/>
+
+
+                                    <TextBlock Text="{Binding NameView}"/>
+
+                                    <TextBlock Text="{Binding DiscriptionView}"/>
+
+                                    <TextBlock Text="{Binding PriceView}"/>
+
+                                    <TextBlock Text="{Binding SaleView}"/>
+
+                                    <TextBlock Text="{Binding ManufactureView}"/>
+
+                                    <Button 
+                                        Name="BtnAdd"
+                                        Content="добавить"
+                                        Click="BtnAdd_Click"
+                                        Width="200"
+                                        Height="50"
+                                        FontSize="18"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                
+                            </StackPanel>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
         </StackPanel>
-        <!-- Список товаров -->
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Orientation="Vertical">
-            <ListView>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <!--
-                        <Image Source="{Binding}"/>
-
-                        <TextBlock Text="{Binding}"/>
-
-                        <TextBlock Text="{Binding}"/>
-                        
-                        <TextBlock Text="{Binding}"/>
-                        
-                        <TextBlock Text="{Binding}"/>
-                        
-                        <TextBlock Text="{Binding}"/>
--->
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-        </StackPanel>
-
-    </StackPanel>
+    </ScrollViewer>
 </Page>

@@ -24,11 +24,22 @@ namespace DemoEx.Pages
         {
             InitializeComponent();
         }
-
+        // Для авторизации 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Pages.PageContent());
-            MessageBox.Show("Error","Error", MessageBoxButton.OK,MessageBoxImage.Error);
+            if (TBlogin.Text != null && TBPassword.Text != null)
+            {
+                if (App.Context.User.Where(p => p.Login == TBlogin.Text && p.Password == TBPassword.Text).Count() == 1)
+                {
+                    // Запоминаем кто вошел и переходим к просмотру продуктов
+                    App.userAvtoriz = App.Context.User.FirstOrDefault(p => p.Login == TBlogin.Text && p.Password == TBPassword.Text);
+                    NavigationService.Navigate(new Pages.PageContent());
+                }
+                else
+                    MessageBox.Show("Пользователь не найден", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+                MessageBox.Show("Заполните поля","Error", MessageBoxButton.OK,MessageBoxImage.Error);
         }
     }
 }

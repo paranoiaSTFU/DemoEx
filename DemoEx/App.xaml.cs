@@ -13,5 +13,7 @@ namespace DemoEx
     /// </summary>
     public partial class App : Application
     {
+        public static DB.DemoExEntities2 Context { get; } = new DB.DemoExEntities2();
+        public static DB.User userAvtoriz = null;
     }
 }
